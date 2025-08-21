@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DBA Glossary Flip Cards</title>
+  <meta name="description" content="A flip-card matching game and study mode for DBA dissertation terms." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>DBA Glossary Flip Cards</h1>
+    <p class="tagline">Match each <strong>term</strong> with its <strong>definition</strong> or switch to <em>Study Mode</em>.</p>
+  </header>
+
+  <main class="app-main">
+    <section class="controls" aria-label="Game Controls">
+      <div class="controls-row">
+        <label for="pairCount">Pairs:</label>
+        <select id="pairCount" aria-label="Number of pairs">
+          <option value="8">8</option>
+          <option value="12" selected>12</option>
+          <option value="16">16</option>
+          <option value="20">20</option>
+          <option value="24">24</option>
+          <option value="28">28</option>
+          <option value="32">32</option>
+          <option value="36">36 (All)</option>
+        </select>
+
+        <button id="newGameBtn" class="btn primary" aria-label="Start new game">New Game</button>
+        <button id="shuffleBtn" class="btn" aria-label="Shuffle cards">Shuffle</button>
+        <button id="resetStatsBtn" class="btn" aria-label="Reset stats">Reset Stats</button>
+
+        <div class="mode-toggle">
+          <input type="checkbox" id="studyModeToggle" />
+          <label for="studyModeToggle" title="Switch between Game and Study Mode">Study Mode</label>
+        </div>
+      </div>
+
+      <div class="stats" role="status" aria-live="polite">
+        <div><strong>Time:</strong> <span id="time">0:00</span></div>
+        <div><strong>Moves:</strong> <span id="moves">0</span></div>
+        <div><strong>Matches:</strong> <span id="matches">0</span>/<span id="totalPairs">12</span></div>
+      </div>
+    </section>
+
+    <section id="gameSection" aria-label="Matching Game">
+      <div id="board" class="board" aria-label="Card grid" role="grid"></div>
+    </section>
+
+    <section id="studySection" class="hidden" aria-label="Study Mode">
+      <div class="study-card" role="region" aria-labelledby="studyHeading">
+        <h2 id="studyHeading">Study Mode</h2>
+        <div class="flashcard" id="flashcard" tabindex="0" aria-live="polite" aria-label="flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-face flashcard-front" aria-hidden="false">
+              <div class="face-label">TERM</div>
+              <div class="face-content" id="flashTerm"></div>
+            </div>
+            <div class="flashcard-face flashcard-back" aria-hidden="true">
+              <div class="face-label">DEFINITION</div>
+              <div class="face-content" id="flashDef"></div>
+            </div>
+          </div>
+        </div>
+        <div class="study-controls">
+          <button id="flipBtn" class="btn">Flip</button>
+          <button id="prevBtn" class="btn">Prev</button>
+          <button id="nextBtn" class="btn">Next</button>
+          <button id="shuffleStudyBtn" class="btn">Shuffle</button>
+          <label class="toggle-def">
+            <input type="checkbox" id="showDefFirst" />
+            Show Definition First
+          </label>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="winDialog" class="dialog">
+    <form method="dialog">
+      <h3>Nice work! 🎉</h3>
+      <p>You matched all pairs.</p>
+      <ul class="summary">
+        <li><strong>Time:</strong> <span id="sumTime">0:00</span></li>
+        <li><strong>Moves:</strong> <span id="sumMoves">0</span></li>
+      </ul>
+      <menu>
+        <button value="close" class="btn">Close</button>
+        <button id="playAgainBtn" class="btn primary">Play Again</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <footer class="app-footer">
+    <p>© 2025 DBA Glossary • Built for GitHub Pages • <a href="README.html">Help</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

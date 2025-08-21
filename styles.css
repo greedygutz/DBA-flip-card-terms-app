@@ -1,0 +1,166 @@
+/* Basic reset */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { height: 100%; }
+body {
+  min-height: 100%;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+  line-height: 1.5;
+  color: #111;
+  background: #f7f7fb;
+}
+
+/* Layout */
+.app-header {
+  padding: 1.25rem 1rem 0.5rem;
+  text-align: center;
+}
+.app-header h1 {
+  margin: 0.25rem 0;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+.tagline { color: #444; margin-top: 0.25rem; }
+
+.app-main { max-width: 1100px; margin: 0 auto; padding: 0 1rem 2rem; }
+
+.controls {
+  background: white;
+  border: 1px solid #e6e6ef;
+  border-radius: 12px;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+}
+.controls-row {
+  display: flex; flex-wrap: wrap; gap: 0.5rem 0.75rem; align-items: center; justify-content: space-between;
+}
+.controls-row label { font-weight: 600; }
+.controls-row select { padding: 0.4rem 0.5rem; border-radius: 8px; border: 1px solid #ccc; }
+
+.mode-toggle {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  margin-left: auto;
+}
+
+.stats {
+  display: flex; gap: 1.25rem; margin-top: 0.5rem; flex-wrap: wrap;
+}
+
+.btn {
+  border: 1px solid #d0d0e0;
+  background: #fff;
+  padding: 0.45rem 0.75rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn:hover { background: #f2f2fa; }
+.btn.primary {
+  background: #3a6df0; color: white; border-color: #2d5ee8;
+}
+.btn.primary:hover { background: #2d5ee8; }
+
+/* Game board */
+.board {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  align-items: stretch;
+}
+.card {
+  position: relative;
+  perspective: 1000px;
+  min-height: 120px;
+  border-radius: 12px;
+}
+.card-inner {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+  border-radius: 12px;
+}
+.card.flipped .card-inner { transform: rotateY(180deg); }
+.card.matched { outline: 3px solid #2fbf71; }
+
+.card-face {
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  background: white;
+  border: 1px solid #e6e6ef;
+  border-radius: 12px;
+  padding: 0.75rem;
+  display: flex; flex-direction: column;
+}
+.card-front { justify-content: center; align-items: center; }
+.card-back { transform: rotateY(180deg); }
+
+.face-label {
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; color: #666;
+  text-transform: uppercase;
+}
+.face-content {
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+}
+.term { font-weight: 700; }
+
+/* Study mode */
+.hidden { display: none !important; }
+
+.study-card {
+  background: white;
+  border: 1px solid #e6e6ef;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+}
+.flashcard {
+  width: min(700px, 95%);
+  height: 260px;
+  margin: 0.5rem auto 0.75rem;
+  perspective: 1000px;
+  outline: none;
+}
+.flashcard-inner {
+  position: relative; width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  border-radius: 12px;
+}
+.flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
+.flashcard-face {
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  background: #fff;
+  border: 1px solid #e6e6ef;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex; flex-direction: column;
+}
+.flashcard-front { justify-content: center; }
+.flashcard-back { transform: rotateY(180deg); overflow-y: auto; }
+.study-controls {
+  display: flex; gap: 0.5rem; justify-content: center; align-items: center; flex-wrap: wrap;
+}
+.toggle-def { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+/* Dialog */
+.dialog {
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  max-width: 420px;
+  width: calc(100% - 2rem);
+}
+.dialog::backdrop { background: rgba(0,0,0,0.35); }
+.dialog menu { display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 0.75rem; }
+.summary { margin: 0.5rem 0; }
+
+/* Footer */
+.app-footer { text-align: center; color: #666; font-size: 0.9rem; padding: 1rem 0 2rem; }
+.app-footer a { color: inherit; }
+
+/* Accessibility */
+.card[tabindex], .flashcard[tabindex] { outline: 2px solid transparent; }
+.card:focus-visible, .flashcard:focus-visible { outline: 3px solid #3a6df0; }

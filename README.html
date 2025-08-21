@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DBA Glossary Flip Cards — Help</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .help { max-width: 900px; margin: 0 auto; background: #fff; border: 1px solid #e6e6ef; border-radius: 12px; padding: 1rem; }
+    .help h1 { text-align: center; }
+    .help pre { background: #f6f6fb; padding: 0.75rem; border-radius: 8px; overflow-x: auto; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+  </style>
+</head>
+<body>
+  <main class="help">
+    <h1>DBA Glossary Flip Cards — Help</h1>
+    <p>This is a <strong>static web app</strong> that you can host on GitHub Pages. It includes a <em>matching game</em> and a <em>study mode</em> for DBA dissertation terms.</p>
+    <h2>How to Use</h2>
+    <ol>
+      <li>Select the number of <strong>Pairs</strong> and click <strong>New Game</strong>.</li>
+      <li>Click a card to flip it. Match each <strong>TERM</strong> with its <strong>DEFINITION</strong>.</li>
+      <li>View stats for <strong>Time</strong>, <strong>Moves</strong>, and <strong>Matches</strong>.</li>
+      <li>Toggle <strong>Study Mode</strong> to use simple flashcards (Flip / Next / Prev / Shuffle).</li>
+    </ol>
+
+    <h2>Deploy to GitHub Pages</h2>
+    <ol>
+      <li>Create a new public repository on GitHub, e.g., <code>dba-flipcards</code>.</li>
+      <li>Upload the files: <code>index.html</code>, <code>styles.css</code>, <code>script.js</code>.</li>
+      <li>In the repo, go to <strong>Settings → Pages</strong>.</li>
+      <li>Under <strong>Build and deployment</strong>, set <strong>Source</strong> to <em>Deploy from a branch</em>.</li>
+      <li>Set <strong>Branch</strong> to <code>main</code> (or <code>master</code>) and <strong>root</strong> as the folder.</li>
+      <li>Save. Your site will be published at <code>https://YOUR-USERNAME.github.io/dba-flipcards</code>.</li>
+    </ol>
+
+    <h2>Edit or Add Terms</h2>
+    <p>Open <code>script.js</code> and edit the <code>TERMS</code> array:</p>
+<pre><code>const TERMS = [
+  { term: "Ontology", def: "Assumptions about the nature of reality (objective vs. constructed)." },
+  // ... add or edit entries here ...
+];</code></pre>
+
+    <h2>Keyboard Shortcuts</h2>
+    <ul>
+      <li><strong>Game:</strong> Use <kbd>Tab</kbd> and <kbd>Enter</kbd>/<kbd>Space</kbd> to flip focused card.</li>
+      <li><strong>Study:</strong> <kbd>Space</kbd> or <kbd>F</kbd> to flip; <kbd>←</kbd>/<kbd>→</kbd> to navigate.</li>
+    </ul>
+
+    <h2>License</h2>
+    <p>MIT License — use and adapt freely.</p>
+  </main>
+</body>
+</html>
